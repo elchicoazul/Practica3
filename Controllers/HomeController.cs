@@ -23,7 +23,15 @@ namespace Practica3.Controllers
 
         public IActionResult Index()
         {
-            var registro = _context.Registrar.ToList();
+        // quantity < reorder_Level 
+//and fecha <= NOW() AND fecha >= date_add(NOW(), INTERVAL -7 DAY)
+            //var registro = _context.Registrar.Where(x => x.Fecha =  Curdate()).ToList();
+            DateTime now = DateTime.Today;
+            DateTime semana = now.AddDays(-7);
+            
+            
+            var registro = _context.Registrar.Where(x => x.Fecha>=semana && x.Fecha<=now).ToList();
+            
 
             return View(registro);
         }
