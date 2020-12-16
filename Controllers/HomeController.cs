@@ -23,10 +23,9 @@ namespace Practica3.Controllers
 
         public IActionResult Index()
         {
-        // quantity < reorder_Level 
-//and fecha <= NOW() AND fecha >= date_add(NOW(), INTERVAL -7 DAY)
-            //var registro = _context.Registrar.Where(x => x.Fecha =  Curdate()).ToList();
+      
             DateTime now = DateTime.Today;
+            now=now.AddDays(+1);
             DateTime semana = now.AddDays(-7);
             
             
